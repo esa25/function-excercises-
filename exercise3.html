@@ -1,0 +1,55 @@
+<!-- Converting random() function into a more broader spectrum using min and max values 
+    then using the random function in the array by replacing the min -> 0 and max -> array.length
+    by taking the array to choose from a paramter makes the code more flexible -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Functions: Task 3</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="../styles.css" /> -->
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+    const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
+    const para = document.createElement('p');
+
+    // Add your code here
+    function random(min,max) {
+    let namePicked = Math.floor(Math.random() * (max-min))+ min; // basic formula to get function to choose a random number with the range of min to max
+    return namePicked;
+    }
+
+    function chooseName(array) {
+    let choice = array[random(0, array.length)]; // inputing the random function and inputing value to the parameters with the range of array
+    return choice;
+    }
+    para.textContent = chooseName(names);
+     
+    // Don't edit the code below here!
+
+    const section = document.querySelector('section');
+
+    section.appendChild(para);
+  </script>
+
+</html>

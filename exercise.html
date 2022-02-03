@@ -1,0 +1,43 @@
+<!-- this shows you how to get JS to pick a random value from an array and how to insert a function into an element using .textContent or .innerHTML-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Functions: Task 1</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="preview">
+    </section>
+  </body>
+
+  <script>
+    const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
+    const para = document.createElement('p');
+
+    // Add your code here
+    function chooseName() {
+    let namePicked = Math.floor(Math.random() * names.length);
+    return (names[namePicked]);
+    }
+    para.textContent = chooseName();
+    console.log(chooseName());
+
+    // Don't edit the code below here!
+
+    const section = document.querySelector('section');
+
+    section.appendChild(para);
+  </script>
+
+</html>

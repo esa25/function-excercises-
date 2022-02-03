@@ -1,0 +1,71 @@
+<!--HTML canvas references used to draw graphics, on the fly, via scripting: https://www.w3schools.com/tags/ref_canvas.asp 
+    Using reference variable canvas and context ctx to createa function that draws rectangles in the canvas
+    using the given variables and method .beginPath(), .rect(), .fillStyle -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Functions: Task 2</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="../styles.css" /> -->
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+    </section>
+
+    <canvas width="480" height="320">
+
+    </canvas>
+
+  </body>
+  <script>
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const x = 50; //The x-coordinate of the upper-left corner of the rectangle.
+    const y = 60; //The y-coordinate of the upper-left corner of the rectangle.
+    const width = 100;
+    const height = 75;
+    const color = 'blue';
+
+    // Add your code here
+
+    function draw() {
+    ctx.beginPath();
+    ctx.rect(x,y,width,height);   //JS syntax context.rect(x-coordinate, y-coordinate, width, height)
+    ctx.fillStyle = color;
+    ctx.fill();
+    }
+    draw();
+
+    function lightBlueRect() {
+    ctx.beginPath();
+    ctx.lineWidth = '5';
+    ctx.strokeStyle = 'lightblue';
+    ctx.rect(25,50,150,100);
+    ctx.stroke();
+    }
+    lightBlueRect();
+    // Don't edit the code below here!
+
+    const section = document.querySelector('section');
+  </script>
+
+</html>

@@ -1,0 +1,130 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <title> Functions Practice File</title>
+    </head>
+    <script>
+        function displayMessage() {
+            alert('This is a message');
+        }
+        displayMessage();
+    </script>
+</html>
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Function start</title>
+    <style>
+      .msgBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 242px;
+        background: #eee;
+      }
+
+      .msgBox p {
+        line-height: 1.5;
+        padding: 10px 20px;
+        color: #333;
+        padding-left: 82px;
+        background-position: 25px center;
+        background-repeat: no-repeat;
+      }
+
+      .msgBox button {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.1rem;
+        color: #aaa;
+      }
+
+    </style>
+  </head>
+  <body>
+    <button>Display message box</button>
+
+    <script>
+// when we call the function, we can provide two variabl values iside the () 
+// to specify the message to display in the message box, and the type of message it is  
+    function displayMessage(msgText, msgType) {
+
+// using a DOM API function document.querySelector() to select the <html> element 
+    // and store a reference to it in a constant called html, so we can manipulate it later on..
+    const html = document.querySelector('html');
+
+//using DOM API function document.createElement() to create a <div> element 
+// and store a reference to it in a constant called panel. This element will be the outer container of our messgae box
+  const panel = document.createElement('div');
+
+// using DOM API function element.setAttribute() to set a class attribute on the panel with a value of msgBox.
+// To make it easir to style the element- if you look at the CSS on the page, you'll see that we are using a .msgBox class selector to style the message box and its contents.
+  panel.setAttribute('class', 'msgBox');
+
+// using Dom function node.appendChild() on html constant, which nests one element inside the other as a child of it..
+// specifying the panel <div> as the child we want to append inside the <html> element. We need to do this as the element we created
+// wont just appear on the page on its own - we need to specify where to put it..
+  html.appendChild(panel);
+
+
+// using DOM API function document.createElement() to create a <p> element
+  const msg = document.createElement ('p');
+
+// using node.textContent property - which represents the text content of an element-
+// to insert a message inside the pararaph
+  msg.textContent = msgText;
+
+// using DOM function node.appendChild() on panel constant
+// specifying msg as child of the panel <div>
+  panel.appendChild(msg);
+
+
+// using DOM API function document.createElement() to create a <button> element
+  const closeBTn = document.createElement('button');
+
+// using node.textContent property -which represents the text content of an element- 
+// to insert an 'x' inside the button.
+// This button will be what needs to be clicked or activated when the user wnats to close the message box
+  closeBTn.textContent = 'x';
+
+// using DOM function node.appendChild() on panel constant
+// specifying closeBTn as child of the panel <div>
+  panel.appendChild(closeBTn);
+
+// using a GlobalEventHandlers.onclivk event handler to make it so that when the button is clicked,
+// some code is run to delete the whole panel from the page - to close the message box
+// making the onclick handler equal to an anonmous function, which ontains the code to run whent he button is clicked
+ closeBTn.onclick = function() {
+      
+// using DOM API function node.removeChild() to specify that we want to
+// remove the specfic chld element of the HTML element, panel <div>
+    panel.parentNode.removeChild(panel);
+  }
+
+if (msgType === 'warning') {
+    msg.style.backgroundImage = 'url(icons/warning.png)';
+    panel.style.backgroundColor ='red';
+} else if (msgType === 'chat') {
+    msg.style.backgroundImage = 'url(icons/chat.png)';
+    panel.style.backgroundColor = 'aqua';
+} else {
+    msg.style.paddingLeft = '20px';
+}
+    }
+
+// using function to call some code in response to a button being clicked.
+    const btn = document.querySelector('button');
+        btn.onclick = function() {
+            // now you can also vary the message inside the parameter to get different messages displayed in the box
+            displayMessage('Your inbox is almost full - delete some mails', 'warning');
+        };
+    </script>
+  </body>
+</html>

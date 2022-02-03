@@ -1,0 +1,57 @@
+<!-- Creatng functions and using the nchange event handler to create a code that tells 
+    you the squared, cued, and factorial value oof the number the user inputs-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function library example</title>
+  <style>
+    input {
+      font-size: 2em;
+      margin: 10px 1px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <input class="numberInput" type="text">
+  <p></p>
+
+  <script>
+    const input = document.querySelector('.numberInput');
+    const para = document.querySelector('p');
+
+    function squared(num) {
+        return num * num;
+    }
+
+    function cubed(num) {
+        return num * num * num;
+    }
+
+    function factorial(num) {
+        if (num < 0) return undefined;
+        if (num == 0) return 1;
+        let x = num - 1;
+        while (x>1) {
+            num *= x;
+            x--;
+        }
+        return num;
+    }
+
+    input.onchange = function() { // .onchange event handler runs whenever the change event fires on the text input- when a new value is entered into the text input 
+        const num = parseFloat(input.value); // The parseFloat() method parses a value as a string and returns the first number.
+        if (isNaN(num)) {
+            para.textContent = 'You need to enter a nmber!';
+        } else {
+            para.textContent = num + ' squared is ' + squared(num) + '. ' + 
+            num + ' cubed is ' + cubed(num) + '. ' + 
+            num + ' factorial is ' + factorial(num) + '.';
+        }
+    }
+
+  </script>
+</body>
+</html>
